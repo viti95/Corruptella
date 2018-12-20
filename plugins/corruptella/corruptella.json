@@ -1,0 +1,11 @@
+{
+    "mappings":{
+        "KEYCODE_S": "dumpTime()",
+        "KEYCODE_D": "restoreLast()",
+        "KEYCODE_W": "fuckRAM(0)",
+        "KEYCODE_E": "fuckROM(0)",
+        "KEYCODE_R": "fuckSound(0)",
+        "KEYCODE_T": "fuckMusic(0)",
+        "KEYCODE_Y": "fuckVideo(0)"
+    }
+}

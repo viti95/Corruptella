@@ -1,0 +1,10 @@
+{
+  "plugin": {
+	"name": "corruptella",
+	"description": "Corruptella plugin",
+	"version": "0.0.1",
+	"author": "ViTi95",
+	"type": "plugin",
+	"start": "false"
+  }
+}
