@@ -8,41 +8,35 @@ end
 
 function corClass.dump(filename)
 	dumpMEM(filename .. "_1", ":maincpu", 8)
-	dumpMEM(filename .. "_2", ":sub", 8)
-	dumpMEM(filename .. "_3", ":soundcpu", 8)
-	dumpMEM(filename .. "_4", ":oki", 8)
+	dumpMEM(filename .. "_2", ":audiocpu", 8)
+	dumpMEM(filename .. "_3", ":oki", 8)
 end
 
 function corClass.restore(filename)
 	restoreMEM(filename .. "_1", ":maincpu", 8)
-	restoreMEM(filename .. "_2", ":sub", 8)
-	restoreMEM(filename .. "_3", ":soundcpu", 8)
-	restoreMEM(filename .. "_4", ":oki", 8)
+	restoreMEM(filename .. "_2", ":audiocpu", 8)
+	restoreMEM(filename .. "_3", ":oki", 8)
 end
 
 function corClass.fuckRAM(mode)
 	if (mode == 0) then
-		fuckADDR(":maincpu", "program", 1, 8, 8)
-		fuckADDR(":maincpu", "program", 4, 8, 8)
-		fuckADDR(":sub", "program", 2, 8, 4)
+		fuckADDR(":maincpu", "program", 15, 8, 8)
+		fuckADDR(":maincpu", "program", 16, 8, 8)
 	end
 
 	if (mode == 1) then
-		fuckADDR(":maincpu", "program", 1, 8, 1)
-		fuckADDR(":maincpu", "program", 4, 8, 1)
-		fuckADDR(":sub", "program", 2, 8, 1)
+		fuckADDR(":maincpu", "program", 15, 8, 1)
+		fuckADDR(":maincpu", "program", 16, 8, 1)
 	end
 end
 
 function corClass.fuckROM(mode)
 	if (mode == 0) then
 		fuckMEM(":maincpu", 8, 8)
-		fuckMEM(":sub", 8, 8)
 	end
 
 	if (mode == 1) then
 		fuckMEM(":maincpu", 8, 1)
-		fuckMEM(":sub", 8, 1)
 	end
 end
 
@@ -52,14 +46,14 @@ end
 
 function corClass.fuckSound(mode)
 	if (mode == 0) then
-		fuckADDR(":soundcpu", "program", 2, 8, 4)
-		fuckMEM(":soundcpu", 8, 8)
+		fuckADDR(":audiocpu", "program", 2, 8, 4)
+		fuckMEM(":audiocpu", 8, 8)
 		fuckMEM(":oki", 8, 32)
 	end
 
 	if (mode == 1) then
-		fuckADDR(":soundcpu", "program", 2, 8, 1)
-		fuckMEM(":soundcpu", 8, 1)
+		fuckADDR(":audiocpu", "program", 2, 8, 1)
+		fuckMEM(":audiocpu", 8, 1)
 		fuckMEM(":oki", 8, 1)
 	end
 end
