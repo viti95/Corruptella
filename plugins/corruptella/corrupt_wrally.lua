@@ -8,10 +8,12 @@ end
 
 function corClass.dump(filename)
 	dumpMEM(filename .. "_1", ":maincpu", 8)
+	dumpMEM(filename .. "_2", ":oki", 8)
 end
 
 function corClass.restore(filename)
 	restoreMEM(filename .. "_1", ":maincpu", 8)
+	restoreMEM(filename .. "_2", ":oki", 8)
 end
 
 function corClass.fuckRAM(mode)
@@ -47,7 +49,13 @@ function corClass.fuckVideo(mode)
 end
 
 function corClass.fuckSound(mode)
+	if (mode == 0) then
+		fuckMEM(":oki", 8, 256)
+	end
 
+	if (mode == 1) then
+		fuckMEM(":oki", 8, 8)
+	end
 end
 
 function corClass.fuckMusic(mode)
