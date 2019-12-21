@@ -156,7 +156,7 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 
 		print ("\nPantallas:\n")
 		for k,v in pairs(manager:machine().screens) do
-			print (k .. ", " .. v:name() .. " (" .. v:width() .. "x" .. v:height() .. "@" .. v:refresh() .. ")")
+			print (k .. " (" .. v:width() .. "x" .. v:height() .. "@" .. v:refresh() .. ")")
 		end
 
 		print("\nDispositivos:\n")
@@ -165,9 +165,16 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 
 			if tablelength(v.state) > 0 then
 				print("\tregisters\t")
+				
+				strRegisters = "\t\t"
+
 				for i,j in pairs(v.state) do
-					print ("\t\t" .. i)
+					strRegisters = strRegisters .. i .. ", "
 				end
+
+				strRegisters = strRegisters:sub(0, #strRegisters - 2)
+
+				print(strRegisters)
 			end
 
 			if tablelength(v.spaces) > 0 then
