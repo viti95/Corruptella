@@ -1,5 +1,5 @@
 -- license:BSD-3-Clause
--- copyright-holders:Carl
+-- copyright-holders:ViTi95
 local exports = {}
 exports.name = "corruptella"
 exports.version = "0.0.1"
@@ -154,12 +154,12 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 	function getInfo()
 		print("\nDriver: " .. manager:machine():system().name .. "(" .. manager:machine():system().parent .. ")")
 
-		print ("\nPantallas:\n")
+		print ("\nScreens:\n")
 		for k,v in pairs(manager:machine().screens) do
 			print (k .. " (" .. v:width() .. "x" .. v:height() .. "@" .. v:refresh() .. ")")
 		end
 
-		print("\nDispositivos:\n")
+		print("\nDevices:\n")
 		for k,v in pairs(manager:machine().devices) do 
 			print(v:name() .. " (" .. k .. ") ") 
 
@@ -187,13 +187,13 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 			end
 		end
 		
-		print("\nRegiones de memoria:\n")
+		print("\nMemory regions:\n")
 
 		for k,v in pairs(manager:machine():memory().regions) do
 			print(k .. ", " .. v.size)
 		end
 
-		print("\nMemoria compartida:\n")
+		print("\nShared memory:\n")
 
 		for k,v in pairs(manager:machine():memory().shares) do
 			print(k .. ", " .. v.size)
@@ -266,11 +266,7 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 			count = count + 1
 		end
 
-		--print(count)
-
 		local rndFuck = math.floor(math.random(1, count))
-
-		--print(rndFuck)
 
 		count = 0
 
@@ -306,6 +302,12 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 	end
 
 	function autofuck(bits, repetitions)
+		autofuckdevices(bits, repetitions)
+		autofuckregions(bits, repetitions)
+		autofuckshares(bits, repetitions)
+	end
+
+	function autofuckdevices(bits, repetitions)
 		for k,v in pairs(manager:machine().devices) do 
 			if tablelength(v.spaces) > 0 then
 				for i,j in pairs (v.spaces) do
@@ -316,12 +318,16 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 				end
 			end
 		end
-		
+	end
+
+	function autofuckregions(bits, repetitions)
 		for k,v in pairs(manager:machine():memory().regions) do
 			fuckMEM(k, bits, repetitions)
 			print(k .. ", " .. v.size)
 		end
+	end
 
+	function autofuckshares(bits, repetitions)
 		for k,v in pairs(manager:machine():memory().shares) do
 			fuckSHA(k, bits, repetitions)
 			print(k .. ", " .. v.size)

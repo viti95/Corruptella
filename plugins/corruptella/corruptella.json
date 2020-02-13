@@ -6,6 +6,11 @@
         "KEYCODE_E": "fuckROM(0)",
         "KEYCODE_R": "fuckSound(0)",
         "KEYCODE_T": "fuckMusic(0)",
-        "KEYCODE_Y": "fuckVideo(0)"
+        "KEYCODE_Y": "fuckVideo(0)",
+        "KEYCODE_Z": "autofuck(8,8)",
+        "KEYCODE_X": "autofuckdevices(8,8)",
+        "KEYCODE_C": "autofuckregions(8,8)",
+        "KEYCODE_V": "autofuckshares(8,8)",
+        "KEYCODE_A": "minifuck(8,64)"
     }
 }
