@@ -58,9 +58,4 @@ function corClass.fuckMusic(mode)
 
 end
 
-function corClass.drawHUD()
-
-end
-
 return corClass
-

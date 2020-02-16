@@ -2,7 +2,7 @@ local corClass = {
 
 }
 
-function corClass.start(screen, game)
+function corClass.start()
 
 end
 
@@ -64,9 +64,4 @@ function corClass.fuckMusic(mode)
 
 end
 
-function corClass.drawHUD()
-
-end
-
 return corClass
-

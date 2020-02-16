@@ -71,10 +71,4 @@ function corClass.fuckMusic(mode)
 		fuckMEM(":soundcpu", 8, 1)
 	end
 end
-
-function corClass.drawHUD()
-
-end
-
 return corClass
-

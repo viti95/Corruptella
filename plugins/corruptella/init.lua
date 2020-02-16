@@ -871,20 +871,6 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 		return ""
 	end
 
-	function get_first_screen()
-		local s
-		for k,v in pairs(manager:machine().screens) do s=v break end
-		return s
-	end
-
-	function draw_hud()
-
-		if corClass ~= nil then
-			corClass.drawHUD()
-		end
-		
-	end
-
 	function string.starts(String,Start)
    		return string.sub(String,1,string.len(Start))==Start
 	end
@@ -897,10 +883,6 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 
 	function menu_callback(index, event)
 		return true
-	end
-
-	function menu_populate()
-		return {{ "Corruption HUD", "", 0 }}
 	end
 
 	mappings = readMappings()
@@ -926,13 +908,11 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 
 		corClass = prequire("corruptella/" .. fileToLoad)
 		if corClass ~= nil then			
-			corClass.start(get_first_screen(), get_game())
+			corClass.start()
 		else
 			print ("System not prepared for corruption")
 		end
 	end)
-
-	--emu.register_frame_done(draw_hud, "frame")
 
 	emu.register_frame(function ()
 
@@ -971,8 +951,6 @@ return ln.linenoise('\x1b[1;36m[Corruptella]\x1b[0m> ')
 		end
 
 	end)
-
-	emu.register_menu(menu_callback, menu_populate, "Corruptella")
 
 	emu.register_periodic(function()
 		if conth.yield then
